@@ -1,0 +1,70 @@
+import java.util.ArrayList;
+
+public class employee extends business{
+    
+    String nombre;
+    String cargo;
+    double hopc=0; //hours worked in pc
+    boolean help=false; //ask for help
+    ArrayList<employee>database;
+    
+    public employee(){
+        
+    }
+
+    public employee(String nombre, String cargo) {
+        this.nombre = nombre;
+        this.cargo = cargo;
+    }
+    
+    
+    public void CreatEmploye (String a,String b){
+        this.nombre=a;
+        this.cargo=b;
+}       
+    public void setname (String m){
+        this.nombre=m;
+}
+    public String getname (){
+        return this.nombre;
+}
+
+    public void setcargo(String m){
+        this.nombre=m;
+}
+
+    public String getcargo(){
+        return this.cargo;
+}
+
+    public void setworkedhours (double h){
+        this.hopc=h; //this method is used for set up weekly the time worked for the employee
+}
+    public double getworkedhours(){
+        return hopc;
+    }
+    public boolean gethelp (){
+        help=true; //this method is activate by a button used by the employee for to send a alert to his suprior
+        return this.help;
+}
+
+    public ArrayList<employee> getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(employee database) {
+        this.database.add(database);
+    }
+
+    @Override
+    public String toString() {
+        return "********************\n"
+                + "nombre=" + nombre +"\n"
+                + "cargo=" + cargo +"\n"
+                + "hopc=" + hopc +"\n"
+                + "help=" + help +"\n"
+                +"********************";
+    }
+
+
+}
