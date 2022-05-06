@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-
 public class employee extends business{
     
     String nombre;
     String cargo;
     double hopc=0; //hours worked in pc
     boolean help=false; //ask for help
-    ArrayList<employee>database;
+    public ArrayList<employee>database=new ArrayList<>();
     
     public employee(){
         
@@ -16,8 +15,7 @@ public class employee extends business{
         this.nombre = nombre;
         this.cargo = cargo;
     }
-    
-    
+
     public void CreatEmploye (String a,String b){
         this.nombre=a;
         this.cargo=b;
@@ -52,8 +50,8 @@ public class employee extends business{
         return database;
     }
 
-    public void setDatabase(employee database) {
-        this.database.add(database);
+    public void setDatabase(employee newemployee) {
+        this.database.add(newemployee);
     }
 
     @Override
