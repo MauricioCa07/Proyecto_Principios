@@ -1,0 +1,12 @@
+public class business {
+    
+    String businesname;
+
+    public String getbusinesName() {
+        return businesname;
+    }
+
+    public void setbusinesName(String businesname) {
+        this.businesname = businesname;
+    }    
+}
