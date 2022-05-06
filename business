@@ -1,12 +1,28 @@
-public class business {
-    
-    String businesname;
+import java.util.ArrayList;
+public class Administrator extends business {
+    String administratorName;
+    ArrayList<Administrator> administratorBasedata=new ArrayList() ;
 
-    public String getbusinesName() {
-        return businesname;
+    public String getAdministratorName() {
+        return administratorName;
     }
 
-    public void setbusinesName(String businesname) {
-        this.businesname = businesname;
-    }    
-}
+    public void setAdministratorName(String administratorName) {
+        this.administratorName = administratorName;
+    }
+
+    public ArrayList<Administrator> getAdministratorBasedata() {
+                 return administratorBasedata;
+    }
+
+    public void setAdministratorBasedata(Administrator administratorBasedata) {
+        this.administratorBasedata.add(administratorBasedata);
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre del administrador=" + administratorName;
+    }
+    
+    
+    }
