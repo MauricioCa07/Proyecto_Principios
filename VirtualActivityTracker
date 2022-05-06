@@ -1,0 +1,120 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class VirtualActivityTracker {
+    
+    
+    static employee us1=new employee();
+    static Scanner teclado = new Scanner(System.in);
+    
+    
+    public static void main(String[] args) {
+    firstAction();
+    while(true){
+        System.out.println("presione 1 si usted es un administrador\n"
+                + "presione 2 para continuar como un empleado\n");
+        int cont=teclado.nextInt();
+        
+        if(cont==1){
+            secondAction();
+        }else if(cont==2){
+          thirdAction();   
+        }else{
+            System.out.println("Seleccione una opcion entre 1 y 2");
+        }
+    }
+}
+
+    public static void firstAction(){
+        Scanner teclado = new Scanner(System.in);
+        business b1 =new business();
+        System.out.println("***********************************************\n"
+                + "Hola bienvenido a VirtualActivityTracker\n"
+                + "A continucación asignara el nombre de su empresa:\n");
+                String businessname=teclado.next();
+                b1.setbusinesName(businessname);  
+        System.out.println("***********************************************");
+    }
+    public static void secondAction(){
+        
+        Administrator ad1=new Administrator();
+        System.out.println("inicio secion como un administtrador");
+                while(true){
+            System.out.println("*****Selecciones que desea hacer*****\n"
+                    + "1.Agregar un nuevo empleado\n"
+                    + "2.Agregar un nuevo administrador\n"
+                    + "3.Ver la lista de empleados y su cantidad de horas trabajadaa esta semana\n"
+                    + "4.Le mostrara un usuario en especifico que usted decida\n"
+                    + "5.Le mostrara  ordenados de mayor a menor las personas que mas han trabajado esta semana"
+                    + "**********************************+");
+            int x=teclado.nextInt();
+            interruptor:
+            switch(x){
+                    case 1:
+                        System.out.println("Ingrese el nombre");
+                        String name=teclado.next();
+                        System.out.println("Ingrese el cargo");
+                        String cargo=teclado.next();
+                        employee us2= new employee(name,cargo);
+                        break interruptor;
+                    case 2:
+                        break interruptor;
+                    case 3:
+                        for(int i=0;i<us1.getDatabase().size();i++){
+                            System.out.println(us1.getDatabase().get(i));
+                        }
+                        break interruptor;
+                    case 4:
+                        System.out.println("*****************************\n"
+                                + "a continuación podrá ver toda la usuario creados\n"
+                                + "*****************************\n");
+                        for(int i=0;i<us1.getDatabase().size();i++){
+                            System.out.println("*****************************\n"
+                                    + "Este empleado esta en la posición"+(i+1));
+                            System.out.println(us1.getDatabase().get(i));
+                            System.out.println("*****************************");
+                        }
+                        System.out.println("El empleado que esta en que posición desea eliminar\n");
+                        int j=teclado.nextInt();
+                        us1.getDatabase().remove(j-1);
+                        break interruptor;
+                    case 5: 
+                        
+                        
+        }
+    }
+}
+    public static void thirdAction(){
+        System.out.println("Bienvenido, usted se  logeo como un un empleado\n"
+                + "1.Asiganara sus horas de trabajo realizadas durante el dia\n"
+                + "2.podra enviar una señal de alerta si considera que su trabajo esta siendo excesivo\n");
+        int option=teclado.nextInt();
+        switche:
+        switch(option){
+            case 1:
+                for (int i=0;i<us1.getDatabase().size();i++){
+                    System.out.println("*****************************\n"
+                            + "Este Empleado esta en la posición:"+(i+1));
+                    System.out.println(us1.getDatabase().get(i));
+                }
+                System.out.println("Ahora debe asignar su cantidad de horas trabajadas esta semana, cual es su posición?");
+                    int assign=teclado.nextInt();
+                System.out.println("a continuación escriba la cantidad de horas trabajadas(con el formato horas.minutos)");
+                    double hopc=teclado.nextDouble();
+                us1.getDatabase().get(assign-1).setworkedhours(hopc);
+                break switche;
+                
+            case 2:
+                for (int i=0;i<us1.getDatabase().size();i++){
+                    System.out.println("*****************************\n"
+                            + "Este Empleado esta en la posición:"+(i+1));
+                    System.out.println(us1.getDatabase().get(i));
+                }
+                System.out.println("Cual es su posición?");
+                    int gethelp=teclado.nextInt();
+                us1.getDatabase().get(gethelp-1).gethelp();
+                
+        } 
+    }
+    
+}
