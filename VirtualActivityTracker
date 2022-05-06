@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class VirtualActivityTracker {
@@ -14,7 +14,6 @@ public class VirtualActivityTracker {
         System.out.println("presione 1 si usted es un administrador\n"
                 + "presione 2 para continuar como un empleado\n");
         int cont=teclado.nextInt();
-        
         if(cont==1){
             secondAction();
         }else if(cont==2){
@@ -56,6 +55,7 @@ public class VirtualActivityTracker {
                         System.out.println("Ingrese el cargo");
                         String cargo=teclado.next();
                         employee us2= new employee(name,cargo);
+                        us1.setDatabase(us2);
                         break interruptor;
                     case 2:
                         break interruptor;
