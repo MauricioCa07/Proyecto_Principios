@@ -1,5 +1,6 @@
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.*;
+
 
 public class VirtualActivityTracker {
     
@@ -14,6 +15,7 @@ public class VirtualActivityTracker {
         System.out.println("presione 1 si usted es un administrador\n"
                 + "presione 2 para continuar como un empleado\n");
         int cont=teclado.nextInt();
+        
         if(cont==1){
             secondAction();
         }else if(cont==2){
@@ -29,7 +31,7 @@ public class VirtualActivityTracker {
         business b1 =new business();
         System.out.println("***********************************************\n"
                 + "Hola bienvenido a VirtualActivityTracker\n"
-                + "A continucación asignara el nombre de su empresa:\n");
+                + "A continucación asignara el nombre de su empresa:");
                 String businessname=teclado.next();
                 b1.setbusinesName(businessname);  
         System.out.println("***********************************************");
@@ -37,14 +39,16 @@ public class VirtualActivityTracker {
     public static void secondAction(){
         
         Administrator ad1=new Administrator();
-        System.out.println("inicio secion como un administtrador");
+        System.out.println("inicio sesion como un administtrador");
+        op1:
                 while(true){
             System.out.println("*****Selecciones que desea hacer*****\n"
                     + "1.Agregar un nuevo empleado\n"
                     + "2.Agregar un nuevo administrador\n"
                     + "3.Ver la lista de empleados y su cantidad de horas trabajadaa esta semana\n"
-                    + "4.Le mostrara un usuario en especifico que usted decida\n"
-                    + "5.Le mostrara  ordenados de mayor a menor las personas que mas han trabajado esta semana"
+                    + "4.Le permitira eliminar un empleado\n"
+                    + "5.Creara un archivo  que guardara la lista de todos los empleados y sus horas trabajadas\n"
+                    + "6.regresara al menu anterior\n"
                     + "**********************************+");
             int x=teclado.nextInt();
             interruptor:
@@ -79,18 +83,22 @@ public class VirtualActivityTracker {
                         us1.getDatabase().remove(j-1);
                         break interruptor;
                     case 5: 
-                        
-                        
+                        escribirArchivo();
+                        break;
+                    case 6:
+                        break op1;            
         }
     }
 }
     public static void thirdAction(){
         System.out.println("Bienvenido, usted se  logeo como un un empleado\n"
                 + "1.Asiganara sus horas de trabajo realizadas durante el dia\n"
-                + "2.podra enviar una señal de alerta si considera que su trabajo esta siendo excesivo\n");
+                + "2.podra enviar una señal de alerta si considera que su trabajo esta siendo excesivo\n"
+                + "3.regresara al menu anterior\n");
         int option=teclado.nextInt();
-        switche:
+         op2:
         switch(option){
+           
             case 1:
                 for (int i=0;i<us1.getDatabase().size();i++){
                     System.out.println("*****************************\n"
@@ -102,7 +110,7 @@ public class VirtualActivityTracker {
                 System.out.println("a continuación escriba la cantidad de horas trabajadas(con el formato horas.minutos)");
                     double hopc=teclado.nextDouble();
                 us1.getDatabase().get(assign-1).setworkedhours(hopc);
-                break switche;
+                break op2;
                 
             case 2:
                 for (int i=0;i<us1.getDatabase().size();i++){
@@ -112,9 +120,24 @@ public class VirtualActivityTracker {
                 }
                 System.out.println("Cual es su posición?");
                     int gethelp=teclado.nextInt();
-                us1.getDatabase().get(gethelp-1).gethelp();
+                us1.getDatabase().get(gethelp-1).gethelp(); 
+            case 3:
+                break op2;
                 
         } 
+    }
+    
+    public static void escribirArchivo(){
+        try{
+        FileWriter f1=new FileWriter("/C:/Users/Mauricio/Desktop/recursion/fichero.txt"); 
+        for (int i=0;i<us1.getDatabase().size();i++){
+            f1.write(us1.getDatabase().get(i).toString());
+            f1.write("\n");
+        }
+        f1.close();
+        }catch(Exception ex){
+            System.out.println("Imposible generar el documento deseado");
+        }
     }
     
 }
