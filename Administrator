@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 public class Administrator extends business {
     String administratorName;
-    ArrayList<Administrator> administratorBasedata=new ArrayList();
+    ArrayList<Administrator> administratorBasedata=new ArrayList() ;
 
     public String getAdministratorName() {
         return administratorName;
